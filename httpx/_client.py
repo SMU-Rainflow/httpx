@@ -650,6 +650,7 @@ class Client(BaseClient):
         trust_env: bool = True,
         default_encoding: str | typing.Callable[[bytes], str] = "utf-8",
     ) -> None:
+        http2 = False
         super().__init__(
             auth=auth,
             params=params,
@@ -734,6 +735,7 @@ class Client(BaseClient):
         app: typing.Callable[..., typing.Any] | None = None,
         trust_env: bool = True,
     ) -> BaseTransport:
+        http2 = False
         if transport is not None:
             return transport
 
@@ -759,6 +761,7 @@ class Client(BaseClient):
         limits: Limits = DEFAULT_LIMITS,
         trust_env: bool = True,
     ) -> BaseTransport:
+        http2 = False
         return HTTPTransport(
             verify=verify,
             cert=cert,
@@ -1397,6 +1400,7 @@ class AsyncClient(BaseClient):
         trust_env: bool = True,
         default_encoding: str | typing.Callable[[bytes], str] = "utf-8",
     ) -> None:
+        http2 = False
         super().__init__(
             auth=auth,
             params=params,
@@ -1481,6 +1485,7 @@ class AsyncClient(BaseClient):
         app: typing.Callable[..., typing.Any] | None = None,
         trust_env: bool = True,
     ) -> AsyncBaseTransport:
+        http2 = False
         if transport is not None:
             return transport
 
@@ -1506,6 +1511,7 @@ class AsyncClient(BaseClient):
         limits: Limits = DEFAULT_LIMITS,
         trust_env: bool = True,
     ) -> AsyncBaseTransport:
+        http2 = False
         return AsyncHTTPTransport(
             verify=verify,
             cert=cert,
